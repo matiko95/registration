@@ -16,15 +16,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
 
-        http.httpBasic().disable();
+        //http.httpBasic().disable();
 
-        /*http.
+        http.
                 httpBasic()
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .formLogin()
-        .and().logout().logoutUrl("/logout");*/
+        .and().logout().logoutUrl("/logout");
     }
 
 
