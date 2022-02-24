@@ -53,12 +53,12 @@
 
 
 <div>
-  <h1>Course Listing</h1>
+  <h1>Schedule Listing</h1>
 </div>
 
 <div>
 
-  <table id="courselist" class="display table table-hover" style="width:100%">
+  <table id="schedulelist" class="display table table-hover" style="width:100%">
     <thead>
     <tr>
       <th>Lecturer Name </th>
@@ -95,7 +95,7 @@
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script>
   $(document).ready(function() {
-    $('#courselist').DataTable( {
+    $('#schedulelist').DataTable( {
       "ajax": {
         url : 'http://localhost:8080/course/getcourseschedule',
       },
@@ -108,7 +108,7 @@
         {data : "scheduleId",
           render:  function (data, type, row, meta){
 
-            data = '<a href="http://localhost:8080/addStudent/' + data + '}">Enroll Student</a>';
+            data = '<a href="http://localhost:8080/addStudent/' + data + '">Enroll Student</a>';
             return data;
           }
           },

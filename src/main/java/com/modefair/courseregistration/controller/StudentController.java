@@ -1,0 +1,46 @@
+package com.modefair.courseregistration.controller;
+
+import com.modefair.courseregistration.model.Schedule;
+import com.modefair.courseregistration.model.Student;
+import com.modefair.courseregistration.service.ScheduleService;
+import com.modefair.courseregistration.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Controller
+public class StudentController {
+
+    private StudentService studentService;
+
+    private ScheduleService scheduleService;
+
+    @Autowired
+    public StudentController(StudentService studentService, ScheduleService scheduleService) {
+        this.studentService = studentService;
+        this.scheduleService = scheduleService;
+    }
+
+    @PostMapping("/schedule/addStudent")
+    public String addStudent(@RequestParam("name") String name, @RequestParam("scheduleId") String tempScheduleId){
+
+        Student newStudent = new Student();
+        newStudent.setName(name);
+
+        Set<Schedule> schedule = new HashSet<>();
+
+        schedule.add(scheduleService.getScheduleById(Long.parseLong(tempScheduleId)));
+
+        newStudent.setSchedule(schedule);
+
+        studentService.saveRecord(newStudent);
+
+        return "redirect:/scheduleList";
+    }
+
+}
