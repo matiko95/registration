@@ -14,12 +14,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        //super.configure(http);
+
+        //http.httpBasic().disable();
 
         http.
                 httpBasic()
                 .and()
-                .authorizeRequests()
+                .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .formLogin()
         .and().logout().logoutUrl("/logout");
@@ -31,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("admin123")
                 .password("admin123")
-                .roles("admin_role")
+                .roles("admin")
                 .and()
                 .withUser("user123")
                 .password("user123")
