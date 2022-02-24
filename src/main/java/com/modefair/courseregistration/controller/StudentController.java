@@ -1,12 +1,17 @@
 package com.modefair.courseregistration.controller;
 
+import com.modefair.courseregistration.dto.HelperDatatables;
 import com.modefair.courseregistration.model.Schedule;
 import com.modefair.courseregistration.model.Student;
 import com.modefair.courseregistration.service.ScheduleService;
 import com.modefair.courseregistration.service.StudentService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,6 +24,8 @@ public class StudentController {
     private StudentService studentService;
 
     private ScheduleService scheduleService;
+
+    HelperDatatables data = new HelperDatatables();
 
     @Autowired
     public StudentController(StudentService studentService, ScheduleService scheduleService) {
@@ -41,6 +48,14 @@ public class StudentController {
         studentService.saveRecord(newStudent);
 
         return "redirect:/scheduleList";
+    }
+
+    @GetMapping("/student/getAllStudent")
+    public ResponseEntity<?> getAllRegisteredStudent(){
+
+        data.setData(studentService.getAllRegisteredStudent());
+
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
 }
