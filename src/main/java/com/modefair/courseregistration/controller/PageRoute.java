@@ -26,4 +26,9 @@ public class PageRoute {
         return "listStudent";
     }
 
+    @GetMapping("/scheduleList")
+    public String scheduleList(){
+        return "schedule";
+    }
+
 }
