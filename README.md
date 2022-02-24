@@ -10,3 +10,4 @@
 ![logout](https://user-images.githubusercontent.com/1485151/155510477-d387e77c-3b5d-458f-a053-e8f58d02a05c.PNG)
 ![Schedule List](https://user-images.githubusercontent.com/1485151/155510478-9e257611-0238-4b46-a3ea-1dbc4a96ee8c.PNG)
 ![Student List](https://user-images.githubusercontent.com/1485151/155510481-e32052e4-b953-450f-814e-e2cb4a91a3be.PNG)
+![erd](https://user-images.githubusercontent.com/1485151/155511008-8fb91a97-e230-4c51-8412-782304cfd4a7.PNG)
