@@ -1,7 +1,9 @@
 package com.modefair.courseregistration.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PageRoute {
@@ -29,6 +31,13 @@ public class PageRoute {
     @GetMapping("/scheduleList")
     public String scheduleList(){
         return "schedule";
+    }
+
+    @GetMapping("/addStudent/{scheduleId}")
+    public String addStudentForm(@PathVariable("scheduleId") String scheduleId, Model model){
+
+        model.addAttribute("scheduleId", scheduleId);
+        return "addStudent";
     }
 
 }

@@ -66,6 +66,7 @@
       <th>Course Credits</th>
       <th>Semester</th>
       <th>Year</th>
+      <th>Action</th>
     </tr>
     </thead>
 
@@ -97,7 +98,6 @@
     $('#courselist').DataTable( {
       "ajax": {
         url : 'http://localhost:8080/course/getcourseschedule',
-
       },
       columns: [
         {data : "lecturer.name"},
@@ -105,7 +105,27 @@
         {data : "course.credits"},
         {data : "semester"},
         {data : "year"},
+        {data : "scheduleId",
+          render:  function (data, type, row, meta){
+
+            data = '<a href="http://localhost:8080/addStudent/' + data + '}">Enroll Student</a>';
+            return data;
+          }
+          },
       ],
+
+      //specify column need to generate custom behaviour
+      /*columnDefs: [
+        {
+          targets: 5,
+          render: function (data, type, row, meta)
+          {
+            data = '<a th:href="@{/addStudent/' + data.columns["lecturer.name"] + '}">Enroll Student</a>';
+            return data;
+          }
+        }
+
+        ],*/
 
     } );
   } );
